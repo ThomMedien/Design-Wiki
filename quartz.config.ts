@@ -2,9 +2,7 @@ import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
+ * Quartz 4 Configuration: Soft Industrial / Pastel Blueprint
  */
 const config: QuartzConfig = {
   configuration: {
@@ -23,34 +21,33 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        // Clean, utilitarian fonts
+        // "Space Grotesk" for that technical feel, "IBM Plex Sans" for the body
         header: "Space Grotesk",
-        body: "Inter",
+        body: "IBM Plex Sans",
         code: "JetBrains Mono",
       },
       colors: {
-        // Concrete, steel, and warning-orange accent
         lightMode: {
-          light: "#f2f2f2",          // page background (concrete)
-          lightgray: "#d4d4d8",      // cards / panels
-          gray: "#6b7280",           // secondary text
-          darkgray: "#111827",       // primary text
-          dark: "#020617",           // strongest text
-          secondary: "#f97316",      // industrial accent (warning orange)
-          tertiary: "#4b5563",       // muted accent / borders
-          highlight: "rgba(216, 181, 157, 0.75)", // hover / selection
-          textHighlight: "#facc1588",             // search / mark highlight
+          light: "#f5f5f7",          // Off-white matte concrete
+          lightgray: "#e2e2e9",      // Soft borders / subtle dividers
+          gray: "#8e9196",           // Muted secondary text
+          darkgray: "#4a4a4e",       // Soft charcoal primary text
+          dark: "#2d2d30",           // Deepest gray (no pure black)
+          secondary: "#89a4b1",      // Muted slate blue (Pastel Industrial)
+          tertiary: "#b19894",       // Dusty rose/copper (Muted accent)
+          highlight: "rgba(137, 164, 177, 0.15)", 
+          textHighlight: "#e2e2e9",
         },
         darkMode: {
-          light: "#020617",          // page background (near-black steel)
-          lightgray: "#111827",      // cards / panels
-          gray: "#4b5563",           // secondary text
-          darkgray: "#e5e7eb",       // primary text
-          dark: "#f9fafb",           // strongest text
-          secondary: "#f97316",      // industrial accent (same orange)
-          tertiary: "#9ca3af",       // muted accent / borders
-          highlight: "rgba(192, 151, 123, 0.81)", // hover / selection
-          textHighlight: "#facc1588",
+          light: "#1a1b1e",          // Matte dark slate
+          lightgray: "#2a2b2e",      // Industrial panels
+          gray: "#71717a",           // Steel gray text
+          darkgray: "#d4d4d8",       // Soft light gray text
+          dark: "#f4f4f5",           // Clean white text
+          secondary: "#a3b8c2",      // Pale steel blue
+          tertiary: "#c9ada7",       // Muted clay
+          highlight: "rgba(163, 184, 194, 0.15)",
+          textHighlight: "#2a2b2e",
         },
       },
     },
@@ -90,7 +87,6 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
     ],
   },
