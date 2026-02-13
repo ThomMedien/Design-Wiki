@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Design Wiki",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -38,7 +38,7 @@ const config: QuartzConfig = {
           dark: "#020617",           // strongest text
           secondary: "#f97316",      // industrial accent (warning orange)
           tertiary: "#4b5563",       // muted accent / borders
-          highlight: "rgba(249, 115, 22, 0.08)", // hover / selection
+          highlight: "rgba(216, 181, 157, 0.75)", // hover / selection
           textHighlight: "#facc1588",             // search / mark highlight
         },
         darkMode: {
@@ -49,7 +49,7 @@ const config: QuartzConfig = {
           dark: "#f9fafb",           // strongest text
           secondary: "#f97316",      // industrial accent (same orange)
           tertiary: "#9ca3af",       // muted accent / borders
-          highlight: "rgba(249, 115, 22, 0.16)", // hover / selection
+          highlight: "rgba(192, 151, 123, 0.81)", // hover / selection
           textHighlight: "#facc1588",
         },
       },
