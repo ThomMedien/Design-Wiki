@@ -1,0 +1,1 @@
+3D Modeling & Rendering is the process of creating a mathematical representation of a three-dimensional object, and then generating a 2D image from that model.

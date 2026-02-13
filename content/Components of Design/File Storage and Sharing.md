@@ -1,0 +1,1 @@
+File Storage & Sharing for media design refers to the systems and services used to store, organize, and securely share large creative files with clients and collaborators.

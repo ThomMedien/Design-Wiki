@@ -1,0 +1,1 @@
+Project Management & Collaboration in media design involves planning, organizing, and managing resources to bring about the successful completion of specific project goals, often working with a team.

@@ -1,0 +1,1 @@
+Graphic Design & Illustration involves creating visual content to communicate messages, using elements like typography, photography, and illustration.

@@ -1,6 +1,5 @@
 ---
-title: Welcome to Quartz
+title: Welcome to my design wiki
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+This is a test while I set up the real design wiki

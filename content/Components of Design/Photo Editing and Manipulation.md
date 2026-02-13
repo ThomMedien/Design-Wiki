@@ -1,0 +1,1 @@
+Photo Editing & Manipulation is the process of altering images to improve their quality, correct errors, or create new compositions.

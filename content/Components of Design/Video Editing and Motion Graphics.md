@@ -1,0 +1,1 @@
+Video Editing & Motion Graphics is the art of manipulating and arranging video shots to create a new whole, and adding animated graphics to create more engaging content.
