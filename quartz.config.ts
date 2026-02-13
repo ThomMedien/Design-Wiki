@@ -23,41 +23,33 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
+        // Clean, utilitarian fonts
         header: "Space Grotesk",
-        body: "IBM Plex Sans",
+        body: "Inter",
         code: "JetBrains Mono",
       },
       colors: {
+        // Concrete, steel, and warning-orange accent
         lightMode: {
-          // background & surfaces
-          light: "#f5f5f7",
-          lightgray: "#d0d4d8",
-          // neutral text / borders
-          gray: "#8b8f98",
-          darkgray: "#3b3f46",
-          dark: "#111418",
-          // industrial accent tones
-          secondary: "#4b6478",
-          tertiary: "#9aa4b2",
-          // subtle selection / hover
-          highlight: "rgba(75, 100, 120, 0.10)",
-          // text highlight for search/selection
-          textHighlight: "#3b82f688",
+          light: "#f2f2f2",          // page background (concrete)
+          lightgray: "#d4d4d8",      // cards / panels
+          gray: "#6b7280",           // secondary text
+          darkgray: "#111827",       // primary text
+          dark: "#020617",           // strongest text
+          secondary: "#f97316",      // industrial accent (warning orange)
+          tertiary: "#4b5563",       // muted accent / borders
+          highlight: "rgba(249, 115, 22, 0.08)", // hover / selection
+          textHighlight: "#facc1588",             // search / mark highlight
         },
         darkMode: {
-          // background & surfaces
-          light: "#111418",
-          lightgray: "#2a2f36",
-          // neutral text / borders
-          gray: "#6b7280",
-          darkgray: "#d1d5db",
-          dark: "#e5e7eb",
-          // industrial accent tones
-          secondary: "#7ea2c9",
-          tertiary: "#9ca3af",
-          // subtle selection / hover
-          highlight: "rgba(126, 162, 201, 0.18)",
-          // text highlight for search/selection
+          light: "#020617",          // page background (near-black steel)
+          lightgray: "#111827",      // cards / panels
+          gray: "#4b5563",           // secondary text
+          darkgray: "#e5e7eb",       // primary text
+          dark: "#f9fafb",           // strongest text
+          secondary: "#f97316",      // industrial accent (same orange)
+          tertiary: "#9ca3af",       // muted accent / borders
+          highlight: "rgba(249, 115, 22, 0.16)", // hover / selection
           textHighlight: "#facc1588",
         },
       },
