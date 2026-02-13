@@ -6,4 +6,6 @@ To do:
 link gemini cli to obsidian, 
 link obsidian to a new website
 
+![[Pasted image 20260213140820.png]]
+
 ---
