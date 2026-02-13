@@ -2,54 +2,67 @@ import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
- * Industrial Technical Archive Configuration
+ * Quartz 4 Configuration
+ *
+ * See https://quartz.jzhao.xyz/configuration for more information.
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Tom Coffey — Archive",
+    pageTitle: "Quartz 4",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics: {
+      provider: "plausible",
+    },
     locale: "en-US",
-    baseUrl: "yourdomain.com",
+    baseUrl: "quartz.jzhao.xyz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "IBM Plex Sans",
+        header: "Space Grotesk",
         body: "IBM Plex Sans",
-        code: "IBM Plex Mono",
+        code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
-          light: "#f3f3f4",
-          lightgray: "#e1e1e3",
-          gray: "#8a8a8f",
-          darkgray: "#2c2c30",
-          dark: "#0f0f11",
-          secondary: "#000000",
-          tertiary: "#5c5c60",
-          highlight: "rgba(0, 0, 0, 0.05)",
-          textHighlight: "rgba(0, 120, 255, 0.18)",
+          // background & surfaces
+          light: "#f5f5f7",
+          lightgray: "#d0d4d8",
+          // neutral text / borders
+          gray: "#8b8f98",
+          darkgray: "#3b3f46",
+          dark: "#111418",
+          // industrial accent tones
+          secondary: "#4b6478",
+          tertiary: "#9aa4b2",
+          // subtle selection / hover
+          highlight: "rgba(75, 100, 120, 0.10)",
+          // text highlight for search/selection
+          textHighlight: "#3b82f688",
         },
         darkMode: {
-          light: "#0b0b0c",
-          lightgray: "#17181a",
-          gray: "#5f6064",
-          darkgray: "#d8d8da",
-          dark: "#f2f2f3",
-          secondary: "#ffffff",
-          tertiary: "#9a9a9f",
-          highlight: "rgba(255, 255, 255, 0.06)",
-          textHighlight: "rgba(0, 120, 255, 0.25)",
+          // background & surfaces
+          light: "#111418",
+          lightgray: "#2a2f36",
+          // neutral text / borders
+          gray: "#6b7280",
+          darkgray: "#d1d5db",
+          dark: "#e5e7eb",
+          // industrial accent tones
+          secondary: "#7ea2c9",
+          tertiary: "#9ca3af",
+          // subtle selection / hover
+          highlight: "rgba(126, 162, 201, 0.18)",
+          // text highlight for search/selection
+          textHighlight: "#facc1588",
         },
       },
     },
   },
-
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
@@ -65,7 +78,30 @@ const config: QuartzConfig = {
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
+      Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
+    filters: [Plugin.RemoveDrafts()],
+    emitters: [
+      Plugin.AliasRedirects(),
+      Plugin.ComponentResources(),
+      Plugin.ContentPage(),
+      Plugin.FolderPage(),
+      Plugin.TagPage(),
+      Plugin.ContentIndex({
+        enableSiteMap: true,
+        enableRSS: true,
+      }),
+      Plugin.Assets(),
+      Plugin.Static(),
+      Plugin.Favicon(),
+      Plugin.NotFoundPage(),
+      // Comment out CustomOgImages to speed up build time
+      Plugin.CustomOgImages(),
+    ],
+  },
+}
+
+export default config
