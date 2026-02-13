@@ -1,14 +1,26 @@
 ---
-title: Welcome to my design wiki - Plan for these notes
+title: Welcome to the Digital Design Wiki
 ---
-Potentially pay for device syncing of notes, at the least create a similar Hugo website/ wiki synced/ linked to the obsidian folder with all my Media design notes and information, just as a place to keep my notes and information. 
 
-I will be taking notes on information from school, and my apprenticeship as well as other things that are important to my career progression
+This wiki is a curated collection of notes, resources, and insights into the world of digital design. Whether you're a seasoned professional or just starting your journey, you'll find valuable information here to support your growth and learning.
 
-To do: 
-link gemini cli to obsidian, 
-link obsidian to a new website
+## Core Disciplines
 
-![[Pasted image 20260213140820.png]]
+This wiki is organized into several key areas of digital design. Explore the sections below to dive into specific topics.
 
-![[splash.png]]
+### Visual Design
+*   [[Components of Design/Graphic Design and Illustration|Graphic Design and Illustration]]
+*   [[Components of Design/Photo Editing and Manipulation|Photo Editing and Manipulation]]
+*   [[Components of Design/3D Modeling and Rendering|3D Modeling and Rendering]]
+*   [[Components of Design/Video Editing and Motion Graphics|Video Editing and Motion Graphics]]
+
+### Product Design
+*   [[Components of Design/UI UX Design and Prototyping|UI/UX Design and Prototyping]]
+
+### Workflow and Tools
+*   [[Components of Design/Tech Stack|Tech Stack]]
+*   [[Components of Design/File Storage and Sharing|File Storage and Sharing]]
+*   [[Components of Design/Project Management and Collaboration|Project Management and Collaboration]]
+*   [[Components of Design/SaaS|SaaS]]
+
+This wiki is a living document, constantly growing and evolving.
