@@ -35,7 +35,7 @@ const config: QuartzConfig = {
           dark: "#2d2d30",           // Deepest gray (no pure black)
           secondary: "#89a4b1",      // Muted slate blue (Pastel Industrial)
           tertiary: "#b19894",       // Dusty rose/copper (Muted accent)
-          highlight: "rgba(137, 164, 177, 0.15)", 
+          highlight: "rgba(137, 164, 177, 0.15)",
           textHighlight: "#e2e2e9",
         },
         darkMode: {
