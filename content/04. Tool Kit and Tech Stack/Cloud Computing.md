@@ -1,5 +1,3 @@
-# Cloud Computing
-
 ## What is Cloud Computing?
 At its core, cloud computing is the on-demand delivery of IT resources—including servers, storage, databases, networking, and software—over the internet. Instead of owning and maintaining physical data centers and servers, you "rent" computing power and storage from providers.
 
@@ -20,3 +18,5 @@ For a startup, cloud computing is a "force multiplier":
 - **Focus on Core Product:** Engineers spend time building features rather than managing server hardware or cooling systems.
 - **"Fail Fast" Capability:** If a product idea doesn't work, you simply delete the cloud resources and stop paying for them immediately.
 - **Global Reach:** A startup in a garage can deploy their app to data centers in London, Tokyo, and New York with a single command.
+
+While this is important to know, it’s not the most important thing in relation to media design. 
