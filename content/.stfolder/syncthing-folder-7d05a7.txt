@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: aimvw-gv4ob
+created: 2026-04-27T17:37:31+02:00
