@@ -94,9 +94,9 @@ Because Illustrator files are designed for output flexibility, vector assets wit
 
 ---
 
-## 3. Colour Profiles: The Translation Layer
+## 3. Colour Profiles and Colour Spaces: The Translation Layer
 
-A colour mode provides the recipe, but a **Colour Profile (ICC Profile)** defines how it tastes on a specific device. Without a profile, RGB and CMYK values are just raw, arbitrary numbers.
+A colour mode (like RGB or CMYK) provides the mathematical formula, but a **Colour Space** defines the actual boundaries of what colours can be represented, and a **Colour Profile (ICC Profile)** acts as the translator to ensure devices display those colours correctly. Without a profile, RGB and CMYK values are just raw, arbitrary numbers.
 
 For example:
 *   `RGB (240, 10, 10)` represents a bright red.
@@ -104,18 +104,71 @@ For example:
 *   On a high-end mobile OLED display, it looks intensely saturated.
 *   By embedding the **sRGB** colour profile, the application tells the display's colour management engine how to adjust the physical pixels so the red looks identical on both screens.
 
-### Common Working Spaces (Working Profiles)
+### What is a Colour Space?
+A **Colour Space** is a specific, bounded subset of a colour model. It represents a particular **Gamut** (the range of colours that can be physically reproduced). Different colour spaces are designed for different purposes, balancing gamut size against device compatibility.
 
-#### RGB Working Spaces
-*   **sRGB (IEC61966-2.1):** The universal standard. Smallest gamut, but supported by virtually all web browsers, screens, and consumer printers. Use this for all web and screen exports.
-*   **Adobe RGB (1998):** Larger gamut, capturing a wider range of cyan and green tones. Excellent for photographers and designers preparing files that will eventually go to print.
-*   **ProPhoto RGB:** An exceptionally wide gamut that contains colors beyond human vision. Used by raw image processors (like Lightroom) to preserve image data before exporting to a smaller space.
+```mermaid
+graph TD
+    CIE["CIE 1931 Chromaticity Diagram <br> (Entire Human Visual Range)"] --> ProPhoto["ProPhoto RGB <br> (~90% of CIE - Archival / Ultra-Wide)"]
+    ProPhoto --> Adobe["Adobe RGB (1998) <br> (~50% of CIE - Photography & Print Prep)"]
+    Adobe --> P3["Display P3 <br> (~45% of CIE - Modern Wide Gamut Displays)"]
+    P3 --> sRGB["sRGB <br> (~35% of CIE - Standard Web / Lowest Common Denominator)"]
+```
 
-#### CMYK Working Spaces
-CMYK profiles depend heavily on the paper stock and printing method:
-*   **PSO Coated v3 / ISO Coated v2 (FOGRA39):** The standards for high-quality printing on glossy or matte coated papers (common in Europe).
-*   **PSO Uncoated v3 (FOGRA52):** Used for printing on matte, textured, or porous uncoated papers, which absorb ink and reduce color saturation.
-*   **US Web Coated (SWOP) v2:** The standard for web offset printing on coated paper (common in North America).
+### RGB Colour Spaces: Differences and Relevance
+
+#### 1. sRGB (Standard RGB)
+*   **Origin:** Developed by Microsoft and HP in 1996 to standardise colour across CRT monitors, scanners, and the internet.
+*   **Gamut Size:** Small. Covers roughly 35% of the CIE 1931 chromaticity space.
+*   **Relevance & Importance:** 
+    *   **Web & Digital Default:** It is the universal standard. Web browsers, social media platforms, mobile apps, and standard monitors all assume images are in sRGB unless specified otherwise.
+    *   **Safety:** It is the "lowest common denominator". If you upload an image in sRGB, you can be confident it will look reasonably consistent across almost all screens.
+    *   **Limitation:** It cannot represent highly saturated cyans, greens, or deep yellows. Many of these unrepresentable colours *can* actually be printed in CMYK, meaning sRGB can limit print capabilities.
+
+#### 2. Adobe RGB (1998)
+*   **Origin:** Created by Adobe to encompass most of the colours achievable on physical CMYK printing presses, specifically targeting rich cyans and greens.
+*   **Gamut Size:** Medium-Large. Covers roughly 50% of the CIE 1931 space.
+*   **Relevance & Importance:**
+    *   **Print Prep & Photography:** Ideal for professional photographers and print designers. By editing photos in Adobe RGB, you preserve rich colours (like tropical ocean water or lush foliage) that would be clipped in sRGB, allowing for a higher-quality conversion to CMYK later.
+    *   **Workflow Requirement:** You must use a calibrated, wide-gamut monitor that supports 99-100% Adobe RGB to actually see these extra colours.
+    *   **Limitation:** Never upload raw Adobe RGB files directly to the web. Standard browsers will misinterpret the numbers, making the image look dull and desaturated.
+
+#### 3. Display P3 (DCI-P3)
+*   **Origin:** Adapted from the digital cinema industry's DCI-P3 standard by Apple and other tech manufacturers for consumer screens.
+*   **Gamut Size:** Similar in volume to Adobe RGB (about 25% larger than sRGB), but shifted. It extends further into warm reds, oranges, and vibrant greens, whereas Adobe RGB extends further into cyans.
+*   **Relevance & Importance:**
+    *   **Modern Display Standard:** Used as the native colour space for iPhones, iPads, MacBooks, modern Android flagships, and high-end TVs.
+    *   **Digital Presentation:** Great for creating digital-only designs (like UI/UX assets or digital illustrations) targeted at modern devices, as it allows for much wider, warmer reds and yellows than sRGB.
+
+#### 4. ProPhoto RGB
+*   **Origin:** Designed by Kodak for photographic archival purposes.
+*   **Gamut Size:** Extremely Large. Covers about 90% of the CIE 1931 space. It is so wide that it contains "imaginary colours"—mathematical coordinates that lie outside the range of human vision.
+*   **Relevance & Importance:**
+    *   **RAW Photo Editing:** Used internally by software like Lightroom and Camera Raw. Because cameras capture more colour information than standard monitors can show, editing in ProPhoto RGB ensures no sensor data is clipped or lost during adjustments.
+    *   **Banding Warning:** You **must** work in **16-bit or 32-bit depth** when using ProPhoto RGB. Because the space is so vast, stretching 8 bits (256 steps per channel) across it leaves wide gaps between colours, leading to severe colour banding (posterization) in gradients.
+    *   **Limitation:** Never export a final file in ProPhoto RGB. It must be converted to sRGB (for web) or Adobe RGB/CMYK (for print) first.
+
+---
+
+### CMYK Colour Spaces: Why Paper Stock Matters
+Unlike RGB spaces which are defined by light, CMYK spaces are defined by the physical combination of ink and paper. The choice of profile defines the maximum ink density (TAC - Total Area Coverage) and how much ink absorbs into the paper:
+*   **PSO Coated v3 (FOGRA51):** The modern European standard for glossy or matte coated papers. Coated papers allow ink to sit on the surface, preserving sharp details and vibrant colours.
+*   **PSO Uncoated v3 (FOGRA52):** Designed for uncoated, porous paper (like office paper or newsprint). Because ink sinks in and spreads (dot gain), this profile applies compensations to prevent muddy print results.
+*   **US Web Coated (SWOP) v2:** A widely used North American standard for magazine and catalog web offset printing.
+
+---
+
+### Why Colour Space Selection Matters: Practical Workflows
+
+#### A. The "Washed-Out Web" Phenomenon
+If you save an image in Adobe RGB and upload it to a web page, the web browser will often ignore the embedded profile and read the raw RGB numbers as if they were sRGB. Because Adobe RGB's coordinates are spaced wider apart:
+*   An Adobe RGB value of `(240, 10, 10)` represents an extremely bright red.
+*   Under sRGB, those same numbers `(240, 10, 10)` represent a much duller, standard red.
+*   The browser displays the dull red, making your vibrant image look flat and lifeless.
+*   *Solution:* Always **convert** your images to sRGB before exporting for screen display.
+
+#### B. Gamut Clipping (Out-of-Gamut Colours)
+When you convert an image from a larger space (Adobe RGB) to a smaller one (sRGB or CMYK), some colours will lie outside the target space's boundaries. The application must "clip" or compress these colours. Using Photoshop's `View > Gamut Warning` highlight helps you identify which colours will lose detail or shift before printing.
 
 ---
 
