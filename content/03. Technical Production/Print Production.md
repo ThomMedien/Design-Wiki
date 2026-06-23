@@ -78,6 +78,9 @@ To ensure a file prints correctly without errors, it must undergo a preflight ch
     *   Black text should usually **overprint** so no white gaps show if alignment shifts.
     *   Colored elements should **knock out** the underlying color to prevent unwanted mixing.
 
+![Print Design Margins](print_margins_diagram.jpg)
+
+
 ---
 
 ## 4. PDF/X Standards

@@ -39,6 +39,9 @@ The active area on a page where text and images are placed. It is bounded by the
 ### Beschnitt & Beschnittzugabe (Bleed)
 The standard margin added to layouts (usually **3mm**) to prevent white edges (**Blitzer**) after the printed paper is cut to size. Elements that go to the edge of the page must extend into the bleed area.
 
+![Print Design Margins](../03.%20Technical%20Production/print_margins_diagram.jpg)
+
+
 ### Ausschießen (Imposition)
 The process of arranging pages on a large printing sheet so that they appear in the correct numerical order and orientation once the sheet is printed, folded, and cut.
 
